@@ -28,3 +28,11 @@ jobs:
         platforms: linux/amd64,linux/arm64
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/beermapping:latest
+    # Exercise 3.2
+    - name: Trigger Render deployment
+      uses: johnbeynon/render-deploy-action@v0.0.8 # Action from the Marketplace
+      with:
+        service_id: ${{ secrets.RENDERSERVICEID }}
+        api_key: ${{ secrets.RENDERAPIKEY }}
+        # Optional: Wait for deploy to finish before the action completes
+        wait_deploy: true
